@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HealthCare Booking System</title>
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f4f8;
+      color: #333;
+      line-height: 1.6;
+    }
+    header, footer {
+      background-color: #00796b;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    nav {
+      background-color: #004d40;
+      padding: 10px 0;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #b2dfdb;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #e0f2f1;
+    }
+    .container {
+      padding: 20px;
+      max-width: 900px;
+      margin: 20px auto;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    section {
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+    h1, h2, h3 {
+      margin-bottom: 15px;
+    }
+    .doctor {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      background: #fafafa;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .doctor-info {
+      flex: 1;
+    }
+    .doctor-rating {
+      margin-top: 10px;
+    }
+    .star {
+      color: gold;
+      font-size: 1.2em;
+      margin-right: 3px;
+    }
+    form {
+      margin-top: 15px;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input, select, button {
+      padding: 10px;
+      margin-bottom: 10px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #00796b;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #00695c;
+    }
+    footer {
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>HealthCare Booking System</h1>
+    <p>Your one-stop solution for appointments and post-diagnosis care</p>
+  </header>
+  
+  <nav>
+    <a onclick="showSection('home')">Home</a>
+    <a onclick="showSection('doctors')">Doctors</a>
+    <a onclick="showSection('booking')">Book Appointment</a>
+    <a onclick="showSection('postDiagnosis')">Post-Diagnosis Care</a>
+  </nav>
+  
+  <div class="container">
+    <!-- Home Section -->
+    <section id="home" class="active">
+      <h2>Welcome</h2>
+      <p>We help you easily book appointments with top doctors and provide subsequent care including medicines, blood tests, and nurse visits. Our simple and clear interface is designed for everyone.</p>
+    </section>
+    
+    <!-- Doctors Section -->
+    <section id="doctors">
+      <h2>Doctor Profiles</h2>
+      
+      <div class="doctor">
+        <div class="doctor-info">
+          <h3>Dr. John Doe</h3>
+          <p><strong>Specialization:</strong> Cardiology</p>
+          <p><strong>Available Slots:</strong> 10:00 AM, 2:00 PM</p>
+          <div class="doctor-rating">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9734;</span>
+            <span>(4.0)</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor">
+        <div class="doctor-info">
+          <h3>Dr. Jane Smith</h3>
+          <p><strong>Specialization:</strong> Neurology</p>
+          <p><strong>Available Slots:</strong> 11:00 AM, 3:00 PM</p>
+          <div class="doctor-rating">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9734;</span>
+            <span class="star">&#9734;</span>
+            <span>(3.0)</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor">
+        <div class="doctor-info">
+          <h3>Dr. Alice Brown</h3>
+          <p><strong>Specialization:</strong> Pediatrics</p>
+          <p><strong>Available Slots:</strong> 9:00 AM, 1:00 PM</p>
+          <div class="doctor-rating">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span>(5.0)</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor">
+        <div class="doctor-info">
+          <h3>Dr. Michael Lee</h3>
+          <p><strong>Specialization:</strong> Dermatology</p>
+          <p><strong>Available Slots:</strong> 12:00 PM, 4:00 PM</p>
+          <div class="doctor-rating">
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9733;</span>
+            <span class="star">&#9734;</span>
+            <span class="star">&#9734;</span>
+            <span>(3.0)</span>
+          </div>
+        </div>
+      </div>
+      
+    </section>
+    
+    <!-- Booking Section -->
+    <section id="booking">
+      <h2>Book an Appointment</h2>
+      <form onsubmit="bookAppointment(event)">
+        <label for="patientName">Your Name:</label>
+        <input type="text" id="patientName" placeholder="Enter your name" required>
+        
+        <label for="doctorSelect">Select Doctor:</label>
+        <select id="doctorSelect" required>
+          <option value="">--Select a Doctor--</option>
+          <option value="Dr. John Doe">Dr. John Doe</option>
+          <option value="Dr. Jane Smith">Dr. Jane Smith</option>
+          <option value="Dr. Alice Brown">Dr. Alice Brown</option>
+          <option value="Dr. Michael Lee">Dr. Michael Lee</option>
+        </select>
+        
+        <label for="slotSelect">Select Time Slot:</label>
+        <select id="slotSelect" required>
+          <option value="">--Select a Time Slot--</option>
+          <option value="9:00 AM">9:00 AM</option>
+          <option value="10:00 AM">10:00 AM</option>
+          <option value="11:00 AM">11:00 AM</option>
+          <option value="12:00 PM">12:00 PM</option>
+          <option value="1:00 PM">1:00 PM</option>
+          <option value="2:00 PM">2:00 PM</option>
+          <option value="3:00 PM">3:00 PM</option>
+          <option value="4:00 PM">4:00 PM</option>
+        </select>
+        
+        <button type="submit">Book Appointment</button>
+      </form>
+      <p id="bookingResult" style="color: #00796b; font-weight: bold;"></p>
+    </section>
+    
+    <!-- Post-Diagnosis Care Section -->
+    <section id="postDiagnosis">
+      <h2>Post-Diagnosis Care</h2>
+      <p>After your consultation, request additional services below:</p>
+      <form onsubmit="orderCare(event)">
+        <label for="careSelect">Select Service:</label>
+        <select id="careSelect" required>
+          <option value="">--Select a Service--</option>
+          <option value="Medicines">Medicines</option>
+          <option value="Blood Test">Blood Test</option>
+          <option value="Nurse Visit">Nurse Visit</option>
+        </select>
+        <button type="submit">Request Service</button>
+      </form>
+      <p id="careResult" style="color: #00796b; font-weight: bold;"></p>
+    </section>
+  </div>
+  
+  <footer>
+    <p>&copy; 2025 HealthCare Booking System. All rights reserved.</p>
+  </footer>
+  
+  <script>
+    // Function to show a particular section and hide others
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        section.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+    }
+    
+    // Handle appointment booking
+    function bookAppointment(event) {
+      event.preventDefault();
+      const name = document.getElementById('patientName').value;
+      const doctor = document.getElementById('doctorSelect').value;
+      const slot = document.getElementById('slotSelect').value;
+      const resultText = `Appointment booked for ${name} with ${doctor} at ${slot}.`;
+      document.getElementById('bookingResult').textContent = resultText;
+    }
+    
+    // Handle post-diagnosis care request
+    function orderCare(event) {
+      event.preventDefault();
+      const service = document.getElementById('careSelect').value;
+      const resultText = `Your request for ${service} has been received.`;
+      document.getElementById('careResult').textContent = resultText;
+    }
+  </script>
+</body>
+</html>

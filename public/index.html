@@ -263,14 +263,25 @@
     }
     
     // Handle appointment booking
-    function bookAppointment(event) {
+    // Updated bookAppointment function
+    async function bookAppointment(event) {
       event.preventDefault();
       const name = document.getElementById('patientName').value;
       const doctor = document.getElementById('doctorSelect').value;
       const slot = document.getElementById('slotSelect').value;
-      const resultText = `Appointment booked for ${name} with ${doctor} at ${slot}.`;
-      document.getElementById('bookingResult').textContent = resultText;
+
+      const response = await fetch('/api/appointments', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, doctor, slot })
+      });
+
+      const result = await response.json();
+      document.getElementById('bookingResult').textContent = result.message;
     }
+
     
     // Handle post-diagnosis care request
     function orderCare(event) {
